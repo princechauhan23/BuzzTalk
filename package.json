@@ -1,0 +1,14 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "creating my first express sever to test",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "author": "prince chauhan",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
