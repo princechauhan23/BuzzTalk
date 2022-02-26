@@ -51,7 +51,9 @@ module.exports.create = function(req, res){
 
                 return res.redirect("/users/sign-in");
             });
-        }else res.redirect("back");
+        }else {
+            return res.redirect("back");
+        }
     });
 
 }
@@ -78,8 +80,5 @@ module.exports.createSession = function(req, res){
             return res.redirect("back");
         }
     });
-    
-    
-
-
 }
+
