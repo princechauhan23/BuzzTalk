@@ -8,13 +8,27 @@ const db = require("./config/mongoose")
 const session = require("express-session");
 const passport = require("passport");
 const passportLocal = require("./config/passport-local-strategy");
+const { authorize } = require("passport");
+const MongoStore = require("connect-mongo");
+const sassMiddleware = require("node-sass-middleware");
 
 
 
 const app = express();
 
+
+
+app.use(sassMiddleware({
+    src: "./assets/scss",
+    dest: "./assets/css",
+    debug: true,
+    outputStyle: "extended",
+    prefix: "/css",
+
+}))
+
 // using the cookie parser
-app.use(express.urlencoded());
+app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
 
 app.use(expressLayouts);
@@ -26,7 +40,7 @@ app.set("layout extractScripts", true);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname,"views"));
 
-// express session
+// mongo store is used to store the session cookie in the db
 app.use(session({
     name: "test",
     // TODO change the secret before deployment in production mode
@@ -35,14 +49,25 @@ app.use(session({
     resave: false,
     cookie: {
         maxAge: (1000*60*100)
-    }
+    },
+    store: MongoStore.create({
+        mongoUrl: 'mongodb://localhost/testing',
+        autoRemove: "disabled"
+        //     mongooseConnection: db,
+        // }),
+        // function(err){
+        //     console.log("connect-mongodb setup ok");
+        })
 }));
 
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(passport.setAuthenticatedUser);
+
 // to decode the encrypted data of form use urlEncoded
 app.use(express.static("./assets"));
+
 
 // use express router
 app.use("/", require("./routes"));

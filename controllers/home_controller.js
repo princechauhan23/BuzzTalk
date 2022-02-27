@@ -1,6 +1,7 @@
 module.exports.home = function(req, res){
-    console.log(req.cookies);
-    return res.end("<h1>Expresss is up for test!</h1>");
+    return res.render("../views/home",{
+        title: "Home"
+    })
 };
 
 // module.exports.actionName = function(req, res){}
