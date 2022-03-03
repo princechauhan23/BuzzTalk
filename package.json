@@ -4,7 +4,8 @@
   "description": "creating my first express sever to test",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "compile:sass": "node-sass scss/style.scss css/style.css"
   },
   "author": "prince chauhan",
   "license": "ISC",

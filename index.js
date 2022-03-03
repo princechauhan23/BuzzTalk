@@ -10,7 +10,7 @@ const passport = require("passport");
 const passportLocal = require("./config/passport-local-strategy");
 const { authorize } = require("passport");
 const MongoStore = require("connect-mongo");
-const sassMiddleware = require("node-sass-middleware");
+// const sassMiddleware = require("node-sass-middleware");
 
 
 
@@ -18,17 +18,19 @@ const app = express();
 
 
 
-app.use(sassMiddleware({
-    src: "./assets/scss",
-    dest: "./assets/css",
-    debug: true,
-    outputStyle: "extended",
-    prefix: "/css",
+// app.use(sassMiddleware({
+//     src: "./assets/scss",
+//     dest: "./assets/css",
+//     debug: true,
+//     outputStyle: "extended",
+//     prefix: "/css",
+    
+// }))
 
-}))
+// to decode the encrypted data of form use urlEncoded
 
-// using the cookie parser
 app.use(express.urlencoded({extended: true}));
+// using the cookie parser
 app.use(cookieParser());
 
 app.use(expressLayouts);
@@ -65,7 +67,6 @@ app.use(passport.session());
 
 app.use(passport.setAuthenticatedUser);
 
-// to decode the encrypted data of form use urlEncoded
 app.use(express.static("./assets"));
 
 
