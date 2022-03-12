@@ -3,11 +3,18 @@
     test / profile page
 </h1>
 
-<p>
-    Name: <%= user.name %>
-</p>
-<p>
-    Email: <%= user.email %>
-</p>
 
-<a></a>
+
+<% if(user.id == Profile_user.id){ %>
+    <!-- if user matches then show the form  -->
+    <form action="/users/update/<%= Profile_user.id%>" method="post">
+        <input type="text" name="name" placeholder="Your Name" value="<%= Profile_user.name %>" required>
+        <input type="email" name="email" placeholder="Your Email" value="<%= Profile_user.email %>" required>
+        <input type="submit" value="update">
+    </form>
+    
+<% }else{%>
+    <!-- else show only the profile info -->
+    <p> Name: <%= Profile_user.name %> </p>
+    <p> Email: <%= Profile_user.email %> </p>
+<% } %>
