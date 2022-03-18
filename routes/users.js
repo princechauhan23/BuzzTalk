@@ -9,6 +9,7 @@ const usercontroller = require("../controllers/user_controller");
 router.get("/profile/:id", passport.checkAuthentication, usercontroller.profile);
 router.post("/update/:id", passport.checkAuthentication, usercontroller.update);
 
+// Sign In Sign Up routes
 router.get("/sign-up", usercontroller.signUp);
 router.get("/sign-in", usercontroller.signIn);
 

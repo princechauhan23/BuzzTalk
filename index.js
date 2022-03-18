@@ -67,7 +67,8 @@ app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
 
 app.use(express.static("./assets"));
-
+// make the uploads path avilable to the browser
+app.use("/uploads", express.static(__dirname + "/uploads"))
 
 // use express router
 app.use("/", require("./routes"));
