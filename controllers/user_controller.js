@@ -33,19 +33,15 @@ module.exports.update = async function(req, res){
                     if (user.avatar){
                         fs.unlinkSync(path.join(__dirname, "..", user.avatar));
                     }
-
-
                     // this is saving the path of the uploaded file into the avatar field in the user
                     user.avatar = User.avatarPath + "/" + req.file.filename;
                 }
                 user.save();
                 return res.redirect("back");
             });
-
         }catch{
             return res.redirect("back");
         }
-
     }else{
         return res.status(401).send("Unauthorized");
     }
