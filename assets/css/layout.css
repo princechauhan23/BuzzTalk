@@ -1,4 +1,13 @@
 body {
+
   margin: 0;
   margin-top: 0;
-  /* text-align: center; */ }
+  /* text-align: center; */
+  position: relative;
+}
+
+body::after {
+  content: ' ';
+  display: block;
+  height: 40px;
+}

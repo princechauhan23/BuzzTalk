@@ -1,0 +1,33 @@
+#feed-post-container {
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#feed-post {
+    height: auto;
+    width: 70%;
+    
+}
+#feed-post-heading {
+    font-size: 24px;
+    margin: 23px 23px 23px 30px;
+}
+#new-post-form {
+    margin: 23px 23px 23px 30px;
+}
+#posts-list {
+    list-style: none;
+}
+
+#user-friends {
+    height: auto;
+    width: 25%;
+    padding-left: 17px;
+    border-left: 2px solid lightgray;
+}
+#user-friends-heading {
+    font-size: 24px;
+
+}

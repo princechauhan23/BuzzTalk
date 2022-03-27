@@ -47,5 +47,44 @@
         </li>`)
     }
 
+    // js for comment form
+    let createComment = function(){
+        let newCommentForm = $("#comment-post-form");
+        newCommentForm.submit(function(e){
+            e.preventDefault();
+
+            $.ajax({
+                type: "post",
+                url: "/comments/create",
+                data: newCommentForm.serialize(),
+                success: function(data){
+                    let newComment = newCommentDom(data.data.post);
+                    $("#post-comment-list>ul").prepend(newComment);
+                },error: function(error){
+                    console.log(error.responseText);
+                }
+            })
+        }); 
+    }
+
+    let newCommentDom = function(comment){
+        return $(`<li>
+        <p>
+            ${ comment.comment }
+            <br>
+            <small>
+                ${ comment.user.name }
+            </small>
+            <small>
+                <a href="/comment/destroy/${ comment.id }">delete</a>
+            </small>
+        </p>
+    </li>`)
+    }
+
+
+
+
     createPost();
+    createComment();
 }

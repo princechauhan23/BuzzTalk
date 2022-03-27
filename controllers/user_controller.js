@@ -102,6 +102,7 @@ module.exports.createSession = function(req, res){
     // steps to authenticate
     // find the user
     // console.log(req.cookies);
+    req.flash("success", "Loged In Successfully");
     return res.redirect("/");
     // User.findOne({email: req.body.email}, function(err, user){
     //     if(err){console.log("error in finding user in signing in"); return}
@@ -125,6 +126,7 @@ module.exports.createSession = function(req, res){
 
 module.exports.destroySession = function(req, res){
     req.logout();
+    req.flash("success", "Loged Out Successfully");
     return res.redirect("/");
 }
 

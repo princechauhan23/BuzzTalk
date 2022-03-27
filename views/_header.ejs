@@ -1,18 +1,20 @@
-<header>
-    this is header
+<link rel="stylesheet" href="../css/header.css">
 
-    <ul>
+<header>
+    <p id="header-heading">TEST</p>
+
+    <ul id="header-list">
         <% if (locals.user){ %>
-            <li><%= user.name %></li>
-            <li>
-                <a href="/users/sign-out"> Sign Out </a>
+            <li class="header-list-item"><%= user.name %></li>
+            <li class="header-list-item">
+                <a class="links" href="/users/sign-out"> Sign Out </a>
             </li>
         <%}else{ %>
-            <li>
-                <a href="/users/sign-in">Sign In</a>
+            <li class="header-list-item">
+                <a class="links" href="/users/sign-in">Sign In</a>
             </li>
-            <li>
-                <a href="/users/sign-up"> Sign Up </a>
+            <li class="header-list-item">
+                <a class="links" href="/users/sign-up"> Sign Up </a>
             </li>
 
         <% } %>
