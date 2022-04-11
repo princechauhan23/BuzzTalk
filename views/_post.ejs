@@ -11,15 +11,15 @@
         <% } %>
     </p>
     <% if (locals.user){ %>
-        <form action="/comment/create" id="comment-post-form" method="post">
+        <form action="/comments/create" id="comment-post-form" method="post">
             <input name="comment" placeholder="type here to add comment" required>
             <input type="hidden" name="post" value="<%= post._id %>">
             <input type="submit" value="add comment">
         </form>
     <% } %>
 
-    <div class="post-comment-list">
-        <ul id="post-comments-<%= post._id %>">
+    <div id="post-comment-<%= post._id %>">
+        <ul id="post-comments-list">
             <% for (comment of post.comments){ %>
                 
                 <!-- list item has been placed in comment.ejs file using partials -->

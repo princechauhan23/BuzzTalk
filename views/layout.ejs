@@ -3,7 +3,8 @@
         <title>
             <%= title %>
         </title>
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
         <link rel="stylesheet" href="../css/layout.css">
@@ -11,19 +12,39 @@
     </head>
     <body>
         <%- include(`_header.ejs`); %>
-        <% if(flash.success && flash.success.length > 0){ %>
+        <!-- <% if(flash.success && flash.success.length > 0){ %>
             <h5>
                 <%= flash.success %>
             </h5>
-            
-        <% } %>
-
-
+        <% } %> -->
+        
         <%- body %>
 
 
         <%- include(`_footer`); %>
 
         <%- script %>
+
+        <script>
+            <% if(flash.success && flash.success.length > 0){ %>
+                new Noty({
+                    theme: "relax",
+                    text: "<%= flash.success %>",
+                    type: "success",
+                    layout: "topRight",
+                    timeout: 1500
+                }).show()
+            <% } %>
+
+            <% if(flash.error && flash.error.length > 0){ %>
+                new Noty({
+                    theme: "relax",
+                    text: "<%= flash.error %>",
+                    type: "error",
+                    layout: "topRight",
+                    timeout: 1500
+                }).show()
+            <% } %>
+        </script>
     </body>
 </html>

@@ -16,21 +16,25 @@ module.exports.create = async function(req, res){
             post.comments.push(comment);
             post.save();
             
-            console.log(err);
-            comment = await comment.populate("user", "name email").execPopulate();
-            commentsMailer.newComment(comment);
-
+            // commentsMailer.newComment(comment);
+            
             if (req.xhr){
                 // Similar for comment to fetch the user's id
-
+                commentWithUser = await comment.populate("user");
+                console.log(commentWithUser)
                 return res.status(200).json({
                     data: {
-                        comment: comment,
+                        comment: {
+                            txt: commentWithUser.comment,
+                            username: commentWithUser.user.name,
+                            id: commentWithUser.id,
+                            post_id: req.body.post
+                        }
                     },
                     message: "Comment Created"
                 });
             }
-            res.redirect("/");
+            return res.redirect("/");
         }
     }catch{
         console.log("error", err);
@@ -49,6 +53,15 @@ module.exports.destroy = async function(req, res){
 
             let post = await Post.findByIdAndUpdate(postId, {$pull: {comments: req.params.id}});
 
+            if (req.xhr){
+                return res.status(200).json({
+                    data: {
+                        comment_id: req.params.id
+                    },
+                    message: "comment deleted!"
+                })
+            }
+            
             return res.redirect("back");
         }else{
             return res.redirect("back");
