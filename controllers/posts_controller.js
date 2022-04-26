@@ -11,7 +11,7 @@ module.exports.create = async function(req,res){
         });
         
         postUser = await post.populate("user");
-        console.log(postUser)
+        // console.log(postUser)
         if(req.xhr){
             return res.status(200).json({
                 data: {
