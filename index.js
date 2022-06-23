@@ -2,6 +2,8 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const path = require("path");
 const port = 8000;
+const cors = require("cors");
+
 const expressLayouts = require("express-ejs-layouts");
 const db = require("./config/mongoose")
 // used for session cookie
@@ -32,6 +34,8 @@ const app = express();
 // }))
 
 // to decode the encrypted data of form use urlEncoded
+
+app.use(cors());
 
 app.use(express.urlencoded({extended: true}));
 // using the cookie parser
