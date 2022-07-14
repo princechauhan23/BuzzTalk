@@ -24,30 +24,40 @@
     // method to create a post in DOM
     let newPostDom = function(post){
         // console.log(post)
-        return $(`<li id="post-${ post.post_id}">
-            <p>
-                ${ post.content }<br>
-                <small>
-                    ${ post.userName }
-                </small>
+        return $(`<li id="post-${ post.post_id}" class="posts-list-item">
+        <div class="posts-list-item-container">
+            <div class="post-list-profile-picture">
+                <img src="../images/12345.png" alt="profile picture"> 
+            </div>
+            <div class="posts-content-conatiner">
+                <p class="content-user">
+                    <small >
+                        ${ post.username }
+                    </small>
+                    <div class="posts-list-item-content">${ post.content }</div><br>
+                </p>
+            </div>
+            <div class="delete-btn-container">
+                    <small>
+                        <a class="delete-post-button" href="/posts/destroy/${post.post_id}">delete</a>
+                    </small>
+            </div>
+        </div>
+        <div class="posts-comment-container">
+            <div class="posts-comment-form-container">
+                    <form action="/comments/create" id="comment-post-form" method="post">
+                        <input class="comment-input" name="comment" placeholder="type here to add comment" required>
+                        <input type="hidden" name="post" value="${ post.post_id }">
+                        <input class="comment-submit-button" type="submit" value="add comment">
+                    </form>
+            </div>
+            <div class="comment-list-container" id="post-comment-${ post.post_id }">
+                <ul id="post-comments-list">
 
-                <small>
-                <a class="delete-post-button" href="/posts/destroy/${ post.post_id}">delete</a>
-                </small>
-                
-            </p>
-                <form action="/comment/create" id="comment-post-form" method="post">
-                    <input name="comment" placeholder="type here to add comment" required>
-                    <input type="hidden" name="post" value="${ post.post_id }">
-                    <input type="submit" value="add comment">
-                </form>
-        
-                <div id="post-comment-${ post.post_id }">
-                    <ul id="post-comments-list">
-
-                    </ul>
-                </div>
-        </li>`)
+                </ul>
+            </div>
+        </div>
+    </li>`)
     }
 
     // method to delete a post from DOM
@@ -93,17 +103,22 @@
     }
 
     let newCommentDom = function(comment){
-        return $(`<li>
-        <p>
-            ${ comment.txt }
+        return $(`<li class="comment-list" id="comment-${comment._id }">
+        <div class="comment-profile-picture-container">
+            <img class="comment-profile-picture" src="../images/12345.png" alt="profile picture"> 
+        </div>
+        <p class="comment-content">
+            <small>
+                ${ comment.user.name }
+            </small>
             <br>
-            <small>
-                ${ comment.username }
-            </small>
-            <small>
-                <a class="delete-comment-button" href="/comment/destroy/${ comment.id }">delete</a>
-            </small>
+            ${ comment.comment }
         </p>
+        <div class="comment-delete-btn-container">
+            <small>
+                <a class="delete-comment-button" href="/comments/destroy/${ comment.id }">delete</a>
+            </small>
+        </div>
     </li>`)
     }
 

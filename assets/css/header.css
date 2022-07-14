@@ -1,30 +1,36 @@
 header {
-    height: 50px;
+    height: 70px;
     width: 100%;
-    background-color: #4c33d9;
+    background-color: #076bdd;
     display: flex;
-    justify-content: space-between;
+    justify-content:space-between;
     color: white;
 }
 
 #header-heading {
-    margin: 10px 10px 10px 40px;
-    font-size: 24px;
+    margin: auto;
+    font-size: 26px;
     font-family: 'Times New Roman', Times, serif;
+    margin-left: 55px;
+    text-shadow: 3px 3px 9px #241e1e;
 }
 #header-list {
     list-style: none;
     display: flex;
     justify-content: right;
-    height: auto;
-    width: 25%;
+    height: 100%;
+    width: 40%;
     margin: 0px;
 }
 .header-list-item {
     height: auto;
-    width: 25%; 
-    padding: 13px 8px 5px 5px;
-    font-size: 16px;
+    width: 25%;
+    padding: 15;
+    font-size: 23px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 3px 3px 9px #241e1e;
 }
 .links {
     text-decoration: none;

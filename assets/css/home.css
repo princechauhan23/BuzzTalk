@@ -1,0 +1,62 @@
+#feed-post-container {
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+/* post section css*/
+#feed-post {
+    height: auto;
+    width: 70%;
+
+}
+
+/* post header css*/
+#feed-post-heading {
+    height: 50px;
+    width: 80%;
+    text-align: left;
+    padding-left: 18px;
+    font-size: 36px;
+    margin: 20px 95px;
+    }
+
+/* new post form css */
+#new-post-form {
+    display: flex;
+    justify-content: center;
+}
+
+/* text input area css */
+#form-textarea {
+    background-color: #efddc5;
+    border-radius: 20px;
+    margin: 0px 10px 0px 45px;
+    padding-left: 10px;
+}
+
+/* submit button css */
+#form-sbt-btn {
+    background-color: #f4ce9b;
+    height: 60px;
+    width: 70px;
+    border-radius: 16px;
+    margin: 27px;
+}
+/* post list container css */
+#posts-list-container {
+    height: auto;
+    width: 80%;
+    /* border: 1px solid black; */
+    margin-left: 94px;
+}
+#posts-list {
+    list-style: none;
+}
+
+
+/* friends list css */
+#user-friends {
+    height: auto;   
+    width: 22%;
+}

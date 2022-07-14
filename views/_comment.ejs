@@ -1,14 +1,22 @@
-<li id="comment-<%=comment._id %>">
-    <p>
-        <%= comment.comment %>
-        <br>
+<link rel="stylesheet" href="../css/comment.css">
+
+
+<li class="comment-list" id="comment-<%=comment._id %>">
+    <div class="comment-profile-picture-container">
+        <img class="comment-profile-picture" src="../images/12345.png" alt="profile picture"> 
+    </div>
+    <p class="comment-content">
         <small>
             <%= comment.user.name %>
         </small>
-        <% if (locals.user && locals.user.id == comment.user.id){%>
-            <small>
-                <a class="delete-comment-button" href="/comments/destroy/<%= comment.id %>">delete</a>
-            </small>
-        <% } %>
+        <br>
+        <%= comment.comment %>
     </p>
+    <% if (locals.user && locals.user.id == comment.user.id){%>
+    <div class="comment-delete-btn-container">
+        <small>
+            <a class="delete-comment-button" href="/comments/destroy/<%= comment.id %>">delete</a>
+        </small>
+    </div>
+    <% } %>
 </li>

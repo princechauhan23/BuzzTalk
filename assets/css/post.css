@@ -1,33 +1,109 @@
-#feed-post-container {
+.posts-list-item {
+    height: auto;
+    width: 95%;
+    padding-left: 26px; 
+    display: flex;
+    flex-direction: column;
+    background-color: #ffe3c2;
+    border-radius: 20px;
+    box-shadow: 0px 5px 10px 2px darkgrey;
+    margin-top: 24px;
+}
+.posts-list-item-container {
     height: auto;
     width: 100%;
     display: flex;
+    justify-content: flex-start;
+    align-items:flex-start ;
+}
+
+.post-list-profile-picture {
+    height: 40px;
+    width: 40px;
+    margin-top: 10px;
+    border-radius: 50%;
+}
+
+.post-list-profile-picture img {
+    height: 100%;
+    width: 100%;
+}
+
+.posts-content-conatiner {
+    height: auto;
+    width: 80%;
+    margin-left: 12px;
+}
+.content-user {
+    font-size: larger;
+    background-color: lightgoldenrodyellow;
+    height: 20px;
+}
+
+.posts-list-item-content {
+    height: auto;
+    width: auto;
+    /* border: 1px solid grey; */
+    border-radius: 5px;
+    background-color: #e1c5c5;
+}
+
+.delete-btn-container {
+    margin: 40px 10px;
+    height: auto;
+    width: 43px;
+    padding-left: 10px;
+    border: 1px solid black;
+    border-radius: 20px;
+    box-shadow: 0px 0px 8px 1px darkslategrey;
+}
+.delete-post-button {
+    text-decoration: none;
+    color: black;
+}
+.posts-comment-container {
+    margin: 0px 55px 10px 50px;
+    height: auto;
+    /* border-radius: 20px; */
+    /* border: 1px solid black; */
+    /* background-color: #e6cc9c; */
+}
+
+.posts-comment-form-container {
+    height: 30px;
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 20px;
+    background-color: #ffd7a8;
+}
+
+#comment-post-form {
+    display: flex;
     justify-content: space-between;
+    align-items: center;
+    height: 100%;
 }
 
-#feed-post {
-    height: auto;
+.comment-input{
+    border: none;
     width: 70%;
-    
+    height: inherit;
+    border-radius: 20px;
+    background-color: #ffd7a8;
 }
-#feed-post-heading {
-    font-size: 24px;
-    margin: 23px 23px 23px 30px;
-}
-#new-post-form {
-    margin: 23px 23px 23px 30px;
-}
-#posts-list {
-    list-style: none;
-}
-
-#user-friends {
-    height: auto;
+.comment-submit-button {
+    border: none;
+    height: inherit;
     width: 25%;
-    padding-left: 17px;
-    border-left: 2px solid lightgray;
+    border-radius: 20px;
+    background-color: #f1f1b6;
 }
-#user-friends-heading {
-    font-size: 24px;
-
+.comment-list-container{
+    border-radius: 20px;
+    margin-top: 15px;
+    background-color: #ffd7a8;
+}
+#post-comments-list{
+    list-style: none;
+    padding-left: 18px;
 }
