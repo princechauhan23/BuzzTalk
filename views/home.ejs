@@ -8,8 +8,10 @@
         <!-- use locals to get rid of errors of undefined user -->
         <% if(locals.user){ %>
         <form action="/posts/create" id="new-post-form" method="post">
-            <textarea id="form-textarea" name="content" cols="80" rows="7" placeholder="holla amigos! Post something new about you!!" required></textarea>    
-            <input id="form-sbt-btn" type="submit" value="Post">
+            <div id="new-post-form-container">
+                <textarea id="form-textarea" name="content" cols="80" rows="7" placeholder="holla amigos! Post something new about you!!" required></textarea>    
+                <input id="form-sbt-btn" type="submit" value="Post">
+            </div>
         </form>
         <% } %>
         <!-- <%= posts[0].user %> -->

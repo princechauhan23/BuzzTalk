@@ -6,12 +6,12 @@ const path = require("path");
 
 let transpoter = nodemailer.createTransport({
     service: "gmail",
-    host: "smtp.gmail.com",
-    port: 587,
+    host: " ", // gmail domain 
+    port:  , // port number 
     secure: false,
     auth: {
-        user: "princechauhan0671@gmail.com",
-        password: "pr!nce@mailbox"
+        user: " ", // User mail 
+        password: " " // password
     }
 });
 
