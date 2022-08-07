@@ -1,6 +1,7 @@
 const User = require("../models/user");
 const fs = require("fs");
 const path = require("path");
+const { nextTick } = require("process");
 
 module.exports.profile = function(req, res){
     // console.log(req.params.id)
@@ -126,9 +127,11 @@ module.exports.createSession = function(req, res){
     // });
 }
 
-module.exports.destroySession = function(req, res){
-    req.logout();
-    req.flash("success", "Loged Out Successfully");
-    return res.redirect("/");
-}
+module.exports.destroySession = function(req, res, next){
+    req.logout(function(err){
+        if (err){ return next(err); }
+        req.flash("success", "Loged Out Successfully");
+        return res.redirect("/");
+    });
+};
 

@@ -10,7 +10,6 @@
                 url: "/posts/create",
                 data: newPostForm.serialize(),
                 success: function(data){
-                    console.log(data)
                     let newPost = newPostDom(data.data.post);
                     $("#posts-list-container>ul").prepend(newPost);
                     deletePost($(" .delete-post-button", newPost));
@@ -32,7 +31,7 @@
             <div class="posts-content-conatiner">
                 <p class="content-user">
                     <small >
-                        ${ post.username }
+                        ${ post.userName }
                     </small>
                     <div class="posts-list-item-content">${ post.content }</div><br>
                 </p>
@@ -103,16 +102,16 @@
     }
 
     let newCommentDom = function(comment){
-        return $(`<li class="comment-list" id="comment-${comment._id }">
+        return $(`<li class="comment-list" id="comment-${comment.id }">
         <div class="comment-profile-picture-container">
             <img class="comment-profile-picture" src="../images/12345.png" alt="profile picture"> 
         </div>
         <p class="comment-content">
             <small>
-                ${ comment.user.name }
+                ${ comment.username }
             </small>
             <br>
-            ${ comment.comment }
+            ${ comment.txt }
         </p>
         <div class="comment-delete-btn-container">
             <small>
@@ -130,6 +129,7 @@
             $.ajax({
                 type: "get",
                 url: $(deleteCommentLink).prop("href"),
+                // console.log(data, "ajax data");
                 success: function(data){
                     $(`#comment-${data.data.comment_id}`).remove();
                 },error: function(error){

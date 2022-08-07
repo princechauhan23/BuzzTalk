@@ -16,12 +16,14 @@ module.exports.create = async function(req, res){
             post.comments.push(comment);
             post.save();
             
-            // commentsMailer.newComment(comment);
-            
+            // console.log(req.user,"user");
+            commentWithUser = await comment.populate("user", 'name email');
+            // console.log(commentWithUser,"llll");
+            commentsMailer.newComment(commentWithUser);
+
             if (req.xhr){
                 // Similar for comment to fetch the user's id
-                commentWithUser = await comment.populate("user");
-                console.log(commentWithUser)
+                // console.log(commentWithUser)
                 return res.status(200).json({
                     data: {
                         comment: {
@@ -36,7 +38,7 @@ module.exports.create = async function(req, res){
             }
             return res.redirect("/");
         }
-    }catch{
+    }catch(err){
         console.log("error", err);
         return;
     }
