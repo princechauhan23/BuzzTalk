@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
+    "prod_start": "NODE_ENV=production nodemon index.js",
     "compile:sass": "node-sass scss/style.scss css/style.css"
   },
   "author": "prince chauhan",

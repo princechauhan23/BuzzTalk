@@ -3,6 +3,7 @@ const cookieParser = require("cookie-parser");
 const path = require("path");
 const port = 8000;
 const cors = require("cors");
+const env = require("./config/environment");
 
 const expressLayouts = require("express-ejs-layouts");
 const db = require("./config/mongoose")
@@ -54,7 +55,7 @@ app.set("views", path.join(__dirname,"views"));
 app.use(session({
     name: "test",
     // TODO change the secret before deployment in production mode
-    secret: "blahsomething",
+    secret: env.session_cookie_key,
     saveUninitialized: false,
     resave: false,
     cookie: {
@@ -78,7 +79,7 @@ app.use(passport.setAuthenticatedUser);
 app.use(flash());
 app.use(customMware.setFlash)
 
-app.use(express.static("./assets"));
+app.use(express.static(env.asset_path));
 // make the uploads path avilable to the browser
 app.use("/uploads", express.static(__dirname + "/uploads"))
 
