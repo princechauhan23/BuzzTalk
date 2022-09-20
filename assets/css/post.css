@@ -1,12 +1,11 @@
 .posts-list-item {
     height: auto;
-    width: 95%;
-    padding-left: 26px; 
+    width: 95%; 
     display: flex;
     flex-direction: column;
-    background-color: #ffe3c2;
-    border-radius: 20px;
-    box-shadow: 0px 1px 5px 1px darkgrey;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 1px 2px 5px #e8eef2;
     margin-top: 24px;
 }
 .posts-list-item-container {
@@ -15,18 +14,23 @@
     display: flex;
     justify-content: flex-start;
     align-items:flex-start ;
+    padding-top:4%;
+    padding-left:4%;
 }
 
 .post-list-profile-picture {
-    height: 40px;
-    width: 40px;
-    margin-top: 10px;
-    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    border-radius: 40px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .post-list-profile-picture img {
-    height: 100%;
-    width: 100%;
+    width: 140%;
+
 }
 
 .posts-content-conatiner {
@@ -36,8 +40,11 @@
 }
 .content-user {
     font-size: larger;
-    background-color: lightgoldenrodyellow;
-    height: 20px;
+    /* background-color: lightgoldenrodyellow; */
+    height: 10px;
+    margin-top:0px;
+    font-weight:bolder;
+    
 }
 
 .posts-list-item-content {
@@ -45,21 +52,20 @@
     width: auto;
     /* border: 1px solid grey; */
     border-radius: 5px;
-    background-color: #e1c5c5;
+    color: #818285;
+    font-size: 16px;
 }
 
 .delete-btn-container {
-    margin: 40px 10px;  
-    height: auto;
-    width: 43px;
-    padding-left: 10px;
-    border: 1px solid black;
-    border-radius: 20px;
-    box-shadow: 0px 0px 4px 0px darkslategrey;
+    margin: 40px 50px;
+    height: 12px;
+    width: 15px;
 }
 .delete-post-button {
     text-decoration: none;
     color: black;
+    font-size: large;
+
 }
 .posts-comment-container {
     margin: 0px 55px 10px 50px;
@@ -72,9 +78,8 @@
 .posts-comment-form-container {
     height: 30px;
     width: 100%;
-    border: 1px solid black;
-    border-radius: 20px;
-    background-color: #ffd7a8;
+    border-radius: 7px;
+    background-color: #e8eef2;
 }
 
 #comment-post-form {
@@ -88,20 +93,21 @@
     border: none;
     width: 70%;
     height: inherit;
-    border-radius: 20px;
-    background-color: #ffd7a8;
+    padding-left: 10px;
+    border-radius: 7px;
+    background-color: #e8eef2;
 }
 .comment-submit-button {
     border: none;
     height: inherit;
     width: 25%;
     border-radius: 20px;
-    background-color: #f1f1b6;
+    background-color: #e8eef2;
 }
 .comment-list-container{
-    border-radius: 20px;
+    border-radius: 7px;
     margin-top: 15px;
-    background-color: #ffd7a8;
+    background-color: #e8eef2;
 }
 #post-comments-list{
     list-style: none;

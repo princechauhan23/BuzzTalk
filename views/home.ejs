@@ -9,7 +9,7 @@
         <% if(locals.user){ %>
         <form action="/posts/create" id="new-post-form" method="post">
             <div id="new-post-form-container">
-                <textarea id="form-textarea" name="content" cols="80" rows="7" placeholder="holla amigos! Post something new about you!!" required></textarea>    
+                <textarea id="form-textarea" name="content" cols="80" rows="7" placeholder="Holla amigos! Post something new about you!!" required></textarea>    
                 <input id="form-sbt-btn" type="submit" value="Post">
             </div>
         </form>
@@ -30,14 +30,26 @@
     </section>
     
     <section id="user-friends">
-        <h4 id="user-friends-heading">Friends</h4>
+        <h3 id="user-friends-heading">Friends</h3>
         <% for (u of all_users){ %>
             <p>
-                <a href="/users/profile/<%= u.id %>"> <%= u.name %></a>
+                <a class="friends" href="/users/profile/<%= u.id %>"> <%= u.name %></a>
             </p>
         <% } %>
     
     </section>
 </div>
 
+<%- include(`_footer`); %>
+
+<!-- importing the script for creating the comments -->
 <script src="/js/home_posts.js"></script>
+<script src="/js/toggle_likes.js"></script>
+<!-- CHANGE:: import the script file for toggle likes, also run it over for the already present posts and coomments on the page -->
+
+<script>
+    $('.likeBtn').each(function(){
+        let self = this;
+        let toggleLike = new ToogleLike(self);
+    })
+</script>

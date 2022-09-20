@@ -1,0 +1,84 @@
+.signup{
+    height: auto;
+    width: 600px;
+    background: #fff;
+    margin: auto;
+    margin-top: 9%;
+    border-radius: 8px;
+    padding-bottom: 10px;
+    box-shadow: 1px 1px 3px #efefef;
+}
+
+.signup-header{
+    text-align: center;
+    padding-top: 20px;
+    padding-left: 20px;
+    font-family: sans-serif;
+}
+
+.signup-form{
+    height: auto;
+    width: 93%;
+    margin: 20px;
+}
+
+.inputs{
+    height: 40px;
+    width: 97%;
+    border-radius: 5px;
+    border: none;
+    background: #efefef;
+    padding-left: 20px;
+    margin: 8px;
+}
+
+.submitBtn{
+    height: 40px;
+    width: 97%;
+    margin: 8px;
+    border: none;
+    background: #1da1f2;
+    font-size: 20px;
+    border-radius: 5px;
+}
+#altdiv{
+    height: 20px;
+    width: 200px;
+    margin: auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.dash{
+    display: inline-block;
+    height: 0px;
+    width: 25px;
+    border: 1px solid black;
+    margin: 0 10px;
+    background: black;
+}
+.google-link{
+    height: 40px;
+    width: 50%;
+    margin: auto;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    background: #e04931;
+    font-size: 20px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+}
+#google-para{
+    margin-left: 10px;
+}
+.google-link:hover{
+    background-color: #1da1f2;
+}
+
+e04931

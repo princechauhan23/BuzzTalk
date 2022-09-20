@@ -1,11 +1,12 @@
 <link rel="stylesheet" href="../css/post.css">
+<script src="https://kit.fontawesome.com/7fe716acd6.js" crossorigin="anonymous"></script>
 
 
 
 <li id="post-<%= post._id %>" class="posts-list-item">
     <div class="posts-list-item-container">
         <div class="post-list-profile-picture">
-            <img src="../images/12345.png" alt="profile picture"> 
+            <img src="../images/12345.png" alt="profile picture">
         </div>
         <div class="posts-content-conatiner">
             <p class="content-user">
@@ -13,33 +14,44 @@
                     <%= post.user.name %>
                 </small>
                 <div class="posts-list-item-content"><%= post.content %></div><br>
+                <% if (locals.user) { %>
+                    <a class="likeBtn" data-likes="<%= post.likes.length %>" href="/likes/toggle/?id=<%=post._id%>&type=Post">
+                        <i id="like" class="fa-regular fa-heart"></i>
+                        <span><%=post.likes.length %> Likes </span>
+                    </a>
+                <% }else{ %>
+                    <%=post.likes.length %> Likes
+                <% } %>
             </p>
         </div>
         <% if (locals.user && locals.user.id == post.user.id){%>
         <div class="delete-btn-container">
                 <small>
-                    <a class="delete-post-button" href="/posts/destroy/<%= post.id %>">delete</a>
+                    <a class="delete-post-button" href="/posts/destroy/<%= post.id %>">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </a>
                 </small>
         </div>
         <% } %>
     </div>
+    <% if (locals.user){ %>
     <div class="posts-comment-container">
         <div class="posts-comment-form-container">
-            <% if (locals.user){ %>
                 <form action="/comments/create" id="comment-post-form" method="post">
                     <input class="comment-input" name="comment" placeholder="type here to add comment" required>
                     <input type="hidden" name="post" value="<%= post._id %>">
                     <input class="comment-submit-button" type="submit" value="add comment">
                 </form>
-            <% } %>
         </div>
         <div class="comment-list-container" id="post-comment-<%= post._id %>">
             <ul id="post-comments-list">
                 <% for (comment of post.comments){ %>
                     <!-- list item has been placed in comment.ejs file using partials -->
                     <%- include("_comment") -%>
+                    
                 <% } %>
             </ul>
         </div>
     </div>
+    <% } %>
 </li>

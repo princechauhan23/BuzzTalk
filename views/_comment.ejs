@@ -12,11 +12,22 @@
         <br>
         <%= comment.comment %>
     </p>
-    <% if (locals.user && locals.user.id == comment.user.id){%>
+    <!-- if the user is available then the like button will be shown to the user -->
+    <% if (locals.user) { %>
+        <a class="likeBtn" data-likes="<%= comment.likes.length %>" href="/likes/toggle/?id=<%=comment._id%>&type=Comment">
+            <i class="fa-regular fa-heart"></i>
+            <p id="like-para"><%=comment.likes.length %></p>
+        </a>
+    <% }else{ %>
+        <%=comment.likes.length %>
+    <% } %>
+
+    <!-- if the loged in user is the owner of the created comment, then he'll be able to delete the comment only -->
+    <% if (locals.user.id == comment.user.id){%>
     <div class="comment-delete-btn-container">
-        <small>
-            <a class="delete-comment-button" href="/comments/destroy/<%= comment.id %>">delete</a>
-        </small>
+        <a class="delete-comment-button" href="/comments/destroy/<%= comment.id %>">
+            <i class="fa-solid fa-trash-can"></i>
+        </a>
     </div>
     <% } %>
 </li>

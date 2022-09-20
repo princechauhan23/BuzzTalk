@@ -13,6 +13,18 @@
                     let newPost = newPostDom(data.data.post);
                     $("#posts-list-container>ul").prepend(newPost);
                     deletePost($(" .delete-post-button", newPost));
+
+                    // CHANGE :: enable the functionality of the toggle like button on the  new post
+                    new ToggleLike($(' .likeBtn', newPost));
+
+                    new Noty({
+                        theme: "relax",
+                        text: "Post published!",
+                        type: "success",
+                        layout: "topRight",
+                        timeout: 1500
+                    }).show();
+
                 },error: function(error){
                     console.log(error.responseText);
                 }
@@ -23,6 +35,7 @@
     // method to create a post in DOM
     let newPostDom = function(post){
         // console.log(post)
+        // CHANGE :: show the count of zero likes on this post 
         return $(`<li id="post-${ post.post_id}" class="posts-list-item">
         <div class="posts-list-item-container">
             <div class="post-list-profile-picture">
@@ -34,13 +47,19 @@
                         ${ post.userName }
                     </small>
                     <div class="posts-list-item-content">${ post.content }</div><br>
+                    <a class="likeBtn" data-likes="0" href="/likes/toggle/?id=${post.post_id}&type=Post">
+                        <i id="like" class="fa-regular fa-heart"></i>
+                        <span> 0 Likes </span>
+                    </a>
                 </p>
             </div>
             <div class="delete-btn-container">
-                    <small>
-                        <a class="delete-post-button" href="/posts/destroy/${post.post_id}">delete</a>
-                    </small>
-            </div>
+                <small>
+                    <a class="delete-post-button" href="/posts/destroy/${post.post_id}">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </a>
+                </small>
+        </div>
         </div>
         <div class="posts-comment-container">
             <div class="posts-comment-form-container">
@@ -69,6 +88,15 @@
                 url: $(deleteLink).prop("href"),
                 success: function(data){
                     $(`#post-${data.data.post_id}`).remove();
+
+                    new Noty({
+                        theme: "relax",
+                        text: "Post and associated comments deleted!",
+                        type: "success",
+                        layout: "topRight",
+                        timeout: 1500
+                    }).show();
+
                 },error: function(error){
                     console.log(error.responseText);
                 }
@@ -94,6 +122,17 @@
                     post_id = data.data.comment.post_id
                     $(`#post-comment-${ post_id }>ul`).prepend(newComment);
                     deleteComment($(" .delete-comment-button", newComment));
+
+                    // CHANGE ::enable the functionality of the toggle like button on the new comment
+                    new ToggleLike($(' .likeBtn', newComment));
+                    new Noty({
+                        theme: "relax",
+                        text: "Comment published!",
+                        type: "success",
+                        layout: "topRight",
+                        timeout: 1500
+                    }).show();
+
                 },error: function(error){
                     console.log(error.responseText);
                 }
@@ -102,6 +141,8 @@
     }
 
     let newCommentDom = function(comment){
+        // CHANGE :: show the count of zero likes on this comment 
+
         return $(`<li class="comment-list" id="comment-${comment.id }">
         <div class="comment-profile-picture-container">
             <img class="comment-profile-picture" src="../images/12345.png" alt="profile picture"> 
@@ -113,23 +154,30 @@
             <br>
             ${ comment.txt }
         </p>
+
+        <a id="like-btn" data-likes="0" href="/likes/toggle/?id=${comment._id}&type=Comment">
+            <i class="fa-regular fa-heart"></i>
+            <p id="like-para">0</p>
+        </a>
+
         <div class="comment-delete-btn-container">
-            <small>
-                <a class="delete-comment-button" href="/comments/destroy/${ comment.id }">delete</a>
-            </small>
+            <a class="delete-comment-button" href="/comments/destroy/${comment.id}">
+                <i class="fa-solid fa-trash-can"></i>
+            </a>
         </div>
     </li>`)
     }
 
 
     let deleteComment = function(deleteCommentLink){
+        console.log(deleteCommentLink, '****');
         $(deleteCommentLink).click(function(e){
             e.preventDefault();
 
+            console.log("ajax req *****");
             $.ajax({
                 type: "get",
                 url: $(deleteCommentLink).prop("href"),
-                // console.log(data, "ajax data");
                 success: function(data){
                     $(`#comment-${data.data.comment_id}`).remove();
                 },error: function(error){
@@ -140,8 +188,30 @@
     }
 
 
+    // const likeFunction = () => {
+    //     $(".likeBtn").click(function(e){
+    //         e.preventDefault()
+            
+    //         $.ajax({
+    //             type: "post",
+    //             url: "/likes/toggle?id=<%=post._id%>&type=Post",
+    //             data: {
+    //                 id : "<%=post._id%>",
+    //                 type: "Post"
+    //             }
+    //             success: function(data){
+    //                 $('#like').removeClass('fa-regular').addClass('fa-solid')
+    //             },error: function(error){
+    //                 console.log("error", error);
+    //             }
+    //         })
+    //     });
+
+    // }
+
 
 
     createPost();
     createComment();
+    // likeFunction();
 }

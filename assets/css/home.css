@@ -37,19 +37,23 @@
 
 /* text input area css */
 #form-textarea {
-    background-color: #efddc5;
-    border-radius: 20px;
+    background-color: #fff;
+    border-radius: 10px;
     margin: 0px 10px 0px 45px;
     padding: 10px 15px;
+    border: none;
+    box-shadow: 1px 1px 2px #e8eef2;    
 }
 
 /* submit button css */
 #form-sbt-btn {
-    background-color: #f4ce9b;
+    background-color: #1da1f2;
     height: 60px;
     width: 70px;
     border-radius: 16px;
     margin: 24px;
+    border: none;
+    color: #fff;
 }
 /* post list container css */
 #posts-list-container {
@@ -65,6 +69,17 @@
 
 /* friends list css */
 #user-friends {
-    height: auto;   
+    height: auto;
     width: 22%;
+    padding:20px 30px;
+    background-color: #fff;
+    margin: 40px 20px 20px 0px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 2px #e8eef2;
+}
+.friends{
+    text-decoration: none;
+    color: black;
+    font: large;
+    padding-left: 10px;
 }

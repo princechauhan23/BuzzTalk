@@ -1,16 +1,28 @@
-<h1>
-    Sign Up
-</h1>
+<link rel="stylesheet" href="../css/signup.css">
+<script src="https://kit.fontawesome.com/7fe716acd6.js" crossorigin="anonymous"></script>
 
-<form action="/users/create" method="post">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <input type="password" name="password" placeholder="Password" required>
-    <input type="password" name="confirm_password" placeholder="Confirm Password" required>
-    <input type="submit" value="Sign Up">
- 
-</form>
 
-<p>
-    <a href="/users/auth/google">Google Sign In/Sign Up</a>
-</p>
+<div class="signup">
+
+    <h1 class="signup-header">
+        Sign Up
+    </h1>
+    
+    <form class="signup-form" action="/users/create" method="post">
+        <input class="inputs" type="text" name="name" placeholder="Your Name" required>
+        <input class="inputs" type="email" name="email" placeholder="Your Email" required>
+        <input class="inputs" type="password" name="password" placeholder="Password" required>
+        <input class="inputs" type="password" name="confirm_password" placeholder="Confirm Password" required>
+        <input class="submitBtn" type="submit" value="Sign Up">
+        
+    </form>
+    <div id="altdiv" >
+        <div class="dash" ></div>
+        <p class="alternate">Or</p>
+        <div class="dash" ></div>
+    </div>
+    <a class="google-link" href="/users/auth/google">
+        <i id="google-icon" class="fa-brands fa-google"></i>
+        <p id="google-para"> Sign Up with Google</p>
+    </a>
+</div>

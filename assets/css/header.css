@@ -1,7 +1,7 @@
 header {
     height: 70px;
     width: 100%;
-    background-color: #076bdd;
+    background-color: #1da1f2;
     display: flex;
     justify-content:space-between;
     color: white;
@@ -11,8 +11,9 @@ header {
     margin: auto;
     font-size: 26px;
     font-family: 'Times New Roman', Times, serif;
-    margin-left: 55px;
-    text-shadow: 3px 3px 9px #241e1e;
+    margin-left: 100px;
+    font-weight: bold;
+    /* text-shadow: 3px 3px 9px #241e1e; */
 }
 #header-list {
     list-style: none;
@@ -30,7 +31,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    text-shadow: 3px 3px 9px #241e1e;
+    /* text-shadow: 3px 3px 9px #241e1e; */
 }
 .links {
     text-decoration: none;
