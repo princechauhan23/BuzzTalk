@@ -20,14 +20,6 @@ const customMware = require("./config/middleware");
 
 const app = express();
 
-// app.use(sassMiddleware({
-//     src: "./assets/scss",
-//     dest: "./assets/css",
-//     debug: true,
-//     outputStyle: "extended",
-//     prefix: "/css",
-// }))
-
 app.use(cors());
 
 // to decode the encrypted data of form use urlEncoded
