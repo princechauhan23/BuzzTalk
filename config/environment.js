@@ -4,6 +4,7 @@ const development = {
   name: "development",
   asset_path: "./assets",
   db: "testing",
+  mongoDBpass: process.env.MONGODBPASS,
   session_cookie_key: process.env.SESSION_COOKIE_KEY,
   smtp: {
     service: "Gmail",
